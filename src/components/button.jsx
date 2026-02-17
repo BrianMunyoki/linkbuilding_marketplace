@@ -8,5 +8,7 @@ function button({label, onClick,className,type='button'}){
         className={`btn ${className}`}>
         { label}
         </button>
-    )
+    );
 }
+
+export default button;
