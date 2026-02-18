@@ -1,6 +1,7 @@
 import React ,{useState} from 'react';
+import Button from './Button';
 
-function form({onSubmit}){
+function Form({onSubmit}){
 //states for inputs
     const [email,setEmail]=useState('');
     const [password,setPassword]=useState('');
@@ -10,17 +11,20 @@ const handlePasswordChange=(e)=>setPassword(e.target.value);
 //handle form submission
 const handleSubmit=(e)=>{
     e.preventDefault();
-    onSubmit({email,passowrd});
+    onSubmit({email,password});
 };
     return(
+        <>
+        <button label= "user" className="rolechanger"/> <button label= "publisher" className="rolechanger"/>
         <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email address:</label><br />
         <input type="text" name="email" value={email} onChange={handleEmailChange} placeholder="Enter your email" /><br />
         <label htmlFor="password">password:</label><br />
         <input type="password" name="password" id="password" value={password} onChange={handlePasswordChange} placeholder="Enter your password" /><br />
-        <button type="submit">Submit</button>
+        <button label="sign in" onclick={handleSubmit} className="primary-btn"/>
         </form>
+        </>
     );
 }
 
-export default form;
+export default Form;
