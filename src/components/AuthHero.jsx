@@ -1,4 +1,5 @@
 import React from 'react';
+import growthImage from '../assets/growth.png';
 
 function AuthHero() {
   return (
@@ -13,7 +14,7 @@ function AuthHero() {
         {/* Hero Content */}
         <div className="mt-20 max-w-md">
           <img 
-            src="https://via.placeholder.com/400x400" // Replace with your image from Stitch
+            src={growthImage} // Replace with your image from Stitch
             alt="Growth Chart" 
             className="w-full rounded-2xl"
           />
