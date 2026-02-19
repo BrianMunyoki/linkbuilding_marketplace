@@ -1,30 +1,63 @@
-import React ,{useState} from 'react';
-import Button from './Button';
+import React, { useState } from 'react';
+import Button from './Button'; // Importing your component
 
-function Form({onSubmit}){
-//states for inputs
-    const [email,setEmail]=useState('');
-    const [password,setPassword]=useState('');
-//handle input changes
-const handleEmailChange=(e)=>setEmail(e.target.value);
-const handlePasswordChange=(e)=>setPassword(e.target.value);
-//handle form submission
-const handleSubmit=(e)=>{
+function LoginForm() {
+  // 1. State to hold user input
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({email,password});
-};
-    return(
-        <>
-        <button label= "user" className="rolechanger"/> <button label= "publisher" className="rolechanger"/>
-        <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email address:</label><br />
-        <input type="text" name="email" value={email} onChange={handleEmailChange} placeholder="Enter your email" /><br />
-        <label htmlFor="password">password:</label><br />
-        <input type="password" name="password" id="password" value={password} onChange={handlePasswordChange} placeholder="Enter your password" /><br />
-        <button label="sign in" onclick={handleSubmit} className="primary-btn"/>
-        </form>
-        </>
-    );
+    console.log("Logging in with:", email, password);
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full">
+      {/* Email Input */}
+      <div className="flex flex-col gap-1">
+        <label className="text-sm font-medium text-gray-700">Email Address</label>
+        <input 
+          type="email" 
+          placeholder="name@company.com"
+          className="w-full p-3 border border-gray-200 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>
+
+      {/* Password Input */}
+      <div className="flex flex-col gap-1">
+        <label className="text-sm font-medium text-gray-700">Password</label>
+        <input 
+          type="password" 
+          placeholder="••••••••"
+          className="w-full p-3 border border-gray-200 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </div>
+
+      {/* Using YOUR Button Component */}
+      <Button 
+        label="Sign In →" 
+        type="submit" 
+        variant="primary" 
+        className="mt-2" 
+      />
+
+      {/* Separator */}
+      <div className="text-center text-xs text-gray-400 uppercase my-4">
+        Or continue with
+      </div>
+
+      {/* Using YOUR Button Component again for Google */}
+      <Button 
+        label="Google" 
+        variant="outline" 
+        onClick={() => console.log("Google Login")}
+      />
+    </form>
+  );
 }
 
-export default Form;
+export default LoginForm;
